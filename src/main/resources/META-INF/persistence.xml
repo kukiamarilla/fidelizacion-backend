@@ -7,6 +7,7 @@
          can find it in the source at postgres_local-ds.xml -->
       <jta-data-source>java:/FidelizacionDS</jta-data-source>
       <class>com.backend.fidelizacion.model.Cliente</class>
+      <class>com.backend.fidelizacion.model.Concepto</class>
       <properties>
          <property name="hibernate.id.new_generator_mappings" value="true"/>
          <property name="hibernate.show_sql" value="true" />

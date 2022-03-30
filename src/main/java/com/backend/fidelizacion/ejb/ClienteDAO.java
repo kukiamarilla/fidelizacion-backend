@@ -34,5 +34,4 @@ public class ClienteDAO {
         Cliente cliente = this.em.find(Cliente.class, id);
         this.em.remove(cliente);
     }
-
 }
