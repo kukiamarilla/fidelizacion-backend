@@ -6,7 +6,7 @@
       <!-- The datasource is deployed as ${ds-deployment-location}, you
          can find it in the source at postgres_local-ds.xml -->
       <jta-data-source>java:/FidelizacionDS</jta-data-source>
-      <class>com.backend.fidelizacion.model.Persona</class>
+      <class>com.backend.fidelizacion.model.Cliente</class>
       <properties>
          <property name="hibernate.id.new_generator_mappings" value="true"/>
          <property name="hibernate.show_sql" value="true" />
