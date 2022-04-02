@@ -19,7 +19,7 @@ import org.json.JSONObject;
 @Path("/clientes")
 @Consumes("application/json")
 @Produces("application/json")
-public class ClienteResource {
+public class ClienteController {
 
     @Inject
     private ClienteDAO clienteDAO;

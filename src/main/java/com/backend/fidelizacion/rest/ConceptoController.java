@@ -19,7 +19,7 @@ import org.json.JSONObject;
 @Path("/conceptos")
 @Consumes("application/json")
 @Produces("application/json")
-public class ConceptoResource {
+public class ConceptoController {
 
     @Inject
     private ConceptoDAO conceptoDAO;
