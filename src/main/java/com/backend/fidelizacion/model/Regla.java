@@ -1,15 +1,13 @@
 
 package com.backend.fidelizacion.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import jakarta.persistence.Column;
-
 
 @Entity
 @Table(name = "reglas")
@@ -24,16 +22,17 @@ public class Regla {
     @Column(name = "monto")
     private Integer monto;
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     public Regla() {
+        this.createdAt = LocalDateTime.now();
     }
 
-    public Regla(Integer limiteInferior, Integer limiteSuperior, Integer monto, Date createdAt) {
+    public Regla(Integer limiteInferior, Integer limiteSuperior, Integer monto, LocalDateTime createdAt) {
         this.limiteInferior = limiteInferior;
         this.limiteSuperior = limiteSuperior;
         this.monto = monto;
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -68,12 +67,11 @@ public class Regla {
         this.monto = monto;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedAt(LocalDateTime createdAt) {
     }
 
     public boolean isValid() {

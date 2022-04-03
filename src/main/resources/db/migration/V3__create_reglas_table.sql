@@ -3,5 +3,5 @@ CREATE TABLE reglas (
     limite_inferior INTEGER,
     limite_superior INTEGER,
     monto INTEGER NOT NULL,
-    created_at DATE NOT NULL
+    created_at TIMESTAMP NOT NULL
 );
