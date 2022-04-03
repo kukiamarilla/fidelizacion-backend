@@ -8,6 +8,8 @@
       <jta-data-source>java:/FidelizacionDS</jta-data-source>
       <class>com.backend.fidelizacion.model.Cliente</class>
       <class>com.backend.fidelizacion.model.Concepto</class>
+      <class>com.backend.fidelizacion.model.Regla</class>
+      <class>com.backend.fidelizacion.model.Vencimiento</class>
       <properties>
          <property name="hibernate.id.new_generator_mappings" value="true"/>
          <property name="hibernate.show_sql" value="true" />
