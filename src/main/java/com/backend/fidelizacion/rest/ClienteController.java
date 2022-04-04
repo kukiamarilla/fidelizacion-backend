@@ -9,8 +9,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import com.backend.fidelizacion.ejb.BolsaDAO;
 import com.backend.fidelizacion.ejb.ClienteDAO;
 import com.backend.fidelizacion.model.Cliente;
 
@@ -24,9 +26,12 @@ public class ClienteController {
     @Inject
     private ClienteDAO clienteDAO;
 
+    @Inject
+    private BolsaDAO bolsaDAO;
+
     @GET
-    public Response listar() {
-        return Response.ok(clienteDAO.listar()).build();
+    public Response listar(@QueryParam("nombre") String nombre, @QueryParam("apellido") String apellido, @QueryParam("cumpleanhos") String cumpleanhos) {
+        return Response.ok(clienteDAO.listar(nombre, apellido, cumpleanhos)).build();
     }
 
     @POST
@@ -56,5 +61,22 @@ public class ClienteController {
         JSONObject response = new JSONObject();
         response.put("message", "Cliente eliminado");
         return Response.ok(response.toString()).build();
+    }
+
+    @GET
+    @Path("/{id}/bolsas")
+    public Response listarBolsas(@PathParam("id") Long id) {
+        return Response.ok(bolsaDAO.listarPorCliente(id)).build();
+    }
+
+    @GET
+    @Path("/puntos-por-vencer")
+    public Response listarConPuntosPorVencer(@QueryParam("dias") Integer dias) {
+        if(dias == null) {
+            JSONObject mensaje = new JSONObject();
+            mensaje.put("mensaje", "Parámetro 'dias' es obligatorio");
+            return Response.status(Response.Status.BAD_REQUEST).entity(mensaje.toString()).build();
+        }
+        return Response.ok(clienteDAO.conPuntosPorVencer(dias)).build();
     }
 }

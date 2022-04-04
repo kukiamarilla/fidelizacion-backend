@@ -38,12 +38,12 @@ public class ReglaController {
 
     @POST
     public Response crear(Regla regla) {
-        reglaDAO.crear(regla);
         if(!regla.isValid()) {
             JSONObject mensaje = new JSONObject();
             mensaje.put("mensaje", "Límite superior debe ser mayor al límite inferior");
             return Response.status(Response.Status.BAD_REQUEST).entity(mensaje.toString()).build();
         }
+        reglaDAO.crear(regla);
         return Response.ok(regla).build();
     }
 
@@ -72,4 +72,3 @@ public class ReglaController {
         return Response.ok(mensaje.toString()).build();
     }
 }
-

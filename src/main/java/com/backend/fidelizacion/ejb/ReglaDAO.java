@@ -34,4 +34,16 @@ public class ReglaDAO {
         Regla regla = this.em.find(Regla.class, id);
         this.em.remove(regla);
     }
+
+    public Integer puntosPorMonto(Integer monto) {
+        List<Regla> reglas = em.createQuery("select r from Regla r order by created_at desc", Regla.class).getResultList();
+        for (Regla regla : reglas) {
+            Integer inferior = regla.getLimiteInferior();
+            Integer superior = regla.getLimiteSuperior();
+            if (( inferior == null || monto >= inferior) && (superior == null || monto <= superior)) {
+                return monto / regla.getMonto();
+            }
+        }
+        return 0;
+    }
 }

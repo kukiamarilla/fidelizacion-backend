@@ -38,12 +38,12 @@ public class VencimientoController {
 
     @POST
     public Response crear(Vencimiento vencimiento) {
-        vencimientoDAO.crear(vencimiento);
         if(!vencimiento.isValid()) {
             JSONObject mensaje = new JSONObject();
             mensaje.put("mensaje", "Límite superior debe ser mayor al límite inferior");
             return Response.status(Response.Status.BAD_REQUEST).entity(mensaje.toString()).build();
         }
+        vencimientoDAO.crear(vencimiento);
         return Response.ok(vencimiento).build();
     }
 
