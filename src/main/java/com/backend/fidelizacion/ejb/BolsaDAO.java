@@ -1,5 +1,6 @@
 package com.backend.fidelizacion.ejb;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -44,5 +45,12 @@ public class BolsaDAO {
             .setParameter("minimo", limiteInferior)
             .setParameter("maximo", limiteSuperior)
             .getResultList();
+    }
+
+    public List<Bolsa> vencidas() {
+        return em.createQuery("select b from Bolsa b where b.fechaCaducidad < :fecha and saldo > 0", Bolsa.class)
+            .setParameter("fecha", new Date(System.currentTimeMillis()))
+            .getResultList();
+        
     }
 }
