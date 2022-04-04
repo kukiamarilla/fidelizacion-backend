@@ -22,6 +22,7 @@ import com.backend.fidelizacion.model.Cliente;
 import com.backend.fidelizacion.model.Concepto;
 import com.backend.fidelizacion.model.Uso;
 import com.backend.fidelizacion.model.UsoDetalle;
+import com.backend.fidelizacion.notification.PuntosUtilizadosNotification;
 
 import org.json.JSONObject;
 
@@ -82,6 +83,8 @@ public class UsoController {
             usoDetalleDAO.crear(usoDetalle);
         }
         uso = usoDAO.obtener(uso.getId());
+        PuntosUtilizadosNotification notification = new PuntosUtilizadosNotification(uso);
+        notification.send();
         return Response.ok(uso).build();
     }
 }
