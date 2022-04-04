@@ -11,6 +11,7 @@
       <class>com.backend.fidelizacion.model.Regla</class>
       <class>com.backend.fidelizacion.model.Vencimiento</class>
       <class>com.backend.fidelizacion.model.Bolsa</class>
+      <class>com.backend.fidelizacion.model.Uso</class>
       <properties>
          <property name="hibernate.id.new_generator_mappings" value="true"/>
          <property name="hibernate.show_sql" value="true" />

@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "reglas")
 public class Regla {
@@ -22,6 +24,7 @@ public class Regla {
     @Column(name = "monto")
     private Integer monto;
     @Column(name = "created_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime createdAt;
 
     public Regla() {

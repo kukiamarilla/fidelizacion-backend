@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "vencimientos")
 public class Vencimiento {
@@ -23,6 +25,7 @@ public class Vencimiento {
     @Column(name = "dias_validez")
     private Integer diasValidez;
     @Column(name = "created_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime createdAt;
 
     public Vencimiento() {

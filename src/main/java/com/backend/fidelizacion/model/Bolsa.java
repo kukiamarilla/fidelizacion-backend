@@ -1,13 +1,15 @@
 package com.backend.fidelizacion.model;
 
 import java.sql.Date;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "bolsas")
@@ -30,10 +32,11 @@ public class Bolsa {
     @Column(name = "monto")
     private int monto;
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private LocalDateTime createdAt;
 
     public Bolsa() {
-        this.createdAt = LocalDate.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     public Bolsa(Long clienteId, Date fechaAsignacion, Date fechaCaducidad, int puntosAsignados, int puntosUtilizados, int saldo, int monto) {
@@ -44,7 +47,7 @@ public class Bolsa {
         this.puntosUtilizados = puntosUtilizados;
         this.saldo = saldo;
         this.monto = monto;
-        this.createdAt = LocalDate.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -111,10 +114,10 @@ public class Bolsa {
         this.monto = monto;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
     }
 }
